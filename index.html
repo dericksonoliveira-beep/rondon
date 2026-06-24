@@ -112,7 +112,6 @@
 
   /* Comparison table */
   .compare{background:var(--card); border:1px solid var(--card-border); border-radius:18px; overflow:hidden;}
-  .compare-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
   .compare table{width:100%; border-collapse:collapse;}
   .compare th, .compare td{padding:18px 22px; text-align:left; font-size:14.5px; border-bottom:1px solid var(--card-border);}
   .compare th{color:var(--text-dim); font-weight:600; font-size:13px; text-transform:uppercase; letter-spacing:0.04em;}
@@ -124,7 +123,7 @@
   /* Mobile: transforma a tabela em cards verticais (sem scroll horizontal) */
   @media(max-width:640px){
     .compare table, .compare thead, .compare tbody{display:block; width:100%;}
-    .compare tr:first-child{display:none;} /* esconde cabeçalho th, já repetido em cada card */
+    .compare tr:first-child{display:none;}
     .compare tr{
       display:grid; grid-template-columns:1fr 1fr; grid-template-areas:"label label" "fin cons";
       padding:16px 18px; border-bottom:1px solid var(--card-border); gap:6px 14px;
@@ -315,7 +314,6 @@
       </div>
 
       <div class="compare">
-        <div class="compare-scroll">
         <table>
           <tr><th>Critério</th><th>Financiamento</th><th>Consórcio</th></tr>
           <tr><td data-label="Critério">Valor</td><td class="fin" data-label="Financiamento">R$ 500.000,00</td><td class="cons" data-label="Consórcio">R$ 500.000,00</td></tr>
@@ -324,7 +322,6 @@
           <tr><td data-label="Critério">Parcela inicial</td><td class="fin" data-label="Financiamento">R$ 5.630,00</td><td class="cons" data-label="Consórcio">R$ 1.718,00</td></tr>
           <tr><td data-label="Critério">Custo total estimado</td><td class="fin" data-label="Financiamento">R$ 1.500.000,00</td><td class="cons" data-label="Consórcio">R$ 625.000,00</td></tr>
         </table>
-        </div>
         <div class="compare-foot">*Consórcio possui apenas taxa de administração, sem incidência de juros. Dados baseados em médias de mercado — consulte uma simulação personalizada com um especialista Rondon antes de contratar.</div>
       </div>
 
@@ -507,9 +504,12 @@
     btn.textContent = 'Enviando...';
 
     // Payload para o Make (que vai parsear e enviar para a API do C2S)
+    const whatsappLimpo = whatsapp.replace(/\D/g,'');
+
     const payload = {
       nome:      nome,
       whatsapp:  whatsapp,
+      phone_or_email_or_wpp_username: whatsappLimpo || email,
       email:     email,
       objetivo:  objetivo,
       credito:   credito,
@@ -542,7 +542,6 @@
 
   // Máscara para WhatsApp (permite apagar normalmente)
   document.getElementById('f_whatsapp').addEventListener('input', function(e) {
-    const isDeleting = e.inputType === 'deleteContentBackward' || e.inputType === 'deleteContentForward';
     let v = e.target.value.replace(/\D/g,'');
     if (v.length > 11) v = v.slice(0,11);
 
@@ -569,7 +568,7 @@
     // Garante que Backspace/Delete sempre conseguem remover caracteres, mesmo sobre hífen/parênteses
     if ((e.key === 'Backspace' || e.key === 'Delete')) {
       const el = e.target;
-      if (el.selectionStart !== el.selectionEnd) return; // seleção normal, deixa o navegador tratar
+      if (el.selectionStart !== el.selectionEnd) return;
       const pos = el.selectionStart;
       const val = el.value;
       if (e.key === 'Backspace' && pos > 0 && /[()\- ]/.test(val[pos-1])) {
