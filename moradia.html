@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Consórcio Imobiliário para Conquistar a Casa Própria | Rondon Investimentos</title>
+<meta name="description" content="Descubra como usar o consórcio imobiliário para conquistar o imóvel para morar, sem juros e com parcelas que cabem no seu orçamento. Parceria oficial Racon Consórcios. Simule grátis.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg: #070d16;
+    --bg-soft: #0a1420;
+    --card: #0d1828;
+    --card-border: rgba(255,255,255,0.06);
+    --text: #eef4f3;
+    --text-dim: #9fb4b2;
+    --teal: #3b82f6;
+    --cyan: #60a5fa;
+    --green: #2563eb;
+    --grad: linear-gradient(95deg, var(--green) 0%, var(--teal) 45%, var(--cyan) 100%);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+
+  /* Background ambience */
+  .glow{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(640px 420px at 12% -8%, rgba(59,130,246,0.16), transparent 60%),
+      radial-gradient(560px 420px at 100% 18%, rgba(96,165,250,0.12), transparent 60%);
+  }
+  main{position:relative; z-index:1;}
+
+  /* Nav */
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 24px; max-width:1120px; margin:0 auto;
+  }
+  .logo{font-weight:800; font-size:19px; letter-spacing:-0.02em;}
+  .logo span{background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .nav-links{display:flex; gap:28px; font-size:14px; color:var(--text-dim);}
+  .nav-links a{color:var(--text-dim); text-decoration:none;}
+  .nav-cta{
+    background:var(--grad); color:#06160f; font-weight:700; font-size:14px;
+    padding:10px 20px; border-radius:8px; text-decoration:none; white-space:nowrap;
+  }
+  @media (max-width:780px){ .nav-links{display:none;} }
+
+  /* Eyebrow */
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12.5px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--teal); margin-bottom:18px;
+  }
+  .eyebrow::before{content:''; width:6px; height:6px; border-radius:50%; background:var(--teal); box-shadow:0 0 10px var(--teal);}
+
+  /* Hero */
+  .hero{padding:64px 0 60px; text-align:left;}
+  .hero h1{
+    font-size:clamp(34px, 5.4vw, 58px); font-weight:800; letter-spacing:-0.02em; line-height:1.08;
+    max-width:780px; margin-bottom:22px;
+  }
+  .hero h1 .accent{background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .hero p.lead{
+    font-size:18px; color:var(--text-dim); max-width:600px; margin-bottom:32px;
+  }
+  .btn-primary{
+    display:inline-block; background:var(--grad); color:#06160f; font-weight:700; font-size:16px;
+    padding:16px 30px; border-radius:10px; text-decoration:none; box-shadow:0 14px 40px -10px rgba(59,130,246,0.45);
+  }
+  .btn-secondary{
+    display:inline-block; border:1px solid var(--card-border); color:var(--text); font-weight:600; font-size:15px;
+    padding:15px 26px; border-radius:10px; text-decoration:none; margin-left:14px;
+  }
+  .hero-stats{display:flex; gap:36px; margin-top:48px; flex-wrap:wrap;}
+  .hero-stats div b{display:block; font-size:24px; font-weight:800;}
+  .hero-stats div span{font-size:13px; color:var(--text-dim);}
+
+  /* Section generic */
+  section{padding:64px 0;}
+  .section-head{max-width:680px; margin-bottom:40px;}
+  .section-head h2{font-size:clamp(26px,3.6vw,36px); font-weight:800; letter-spacing:-0.01em; margin-bottom:14px;}
+  .section-head p{color:var(--text-dim); font-size:16px;}
+  .divider{height:1px; background:linear-gradient(90deg, transparent, var(--card-border), transparent); margin:0 auto;}
+
+  /* Profile cards */
+  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  @media(max-width:860px){ .grid3{grid-template-columns:1fr;} }
+  .card{
+    background:var(--card); border:1px solid var(--card-border); border-radius:16px; padding:28px;
+  }
+  .icon-badge{
+    width:46px; height:46px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, rgba(59,130,246,0.18), rgba(96,165,250,0.14));
+    border:1px solid rgba(59,130,246,0.25); margin-bottom:18px; font-size:20px;
+  }
+  .card h3{font-size:17px; font-weight:700; margin-bottom:8px;}
+  .card p{color:var(--text-dim); font-size:14.5px;}
+
+  /* Q&A inline blocks */
+  .qa{background:var(--card); border:1px solid var(--card-border); border-radius:16px; padding:30px 32px; margin-bottom:18px;}
+  .qa h3{font-size:18px; font-weight:700; margin-bottom:10px; display:flex; gap:10px; align-items:flex-start;}
+  .qa h3::before{content:'?'; flex-shrink:0; width:26px; height:26px; border-radius:50%; background:var(--grad); color:#06160f; font-weight:800; font-size:14px; display:flex; align-items:center; justify-content:center; margin-top:2px;}
+  .qa p{color:var(--text-dim); font-size:15px; padding-left:36px;}
+
+  /* Comparison table */
+  .compare{background:var(--card); border:1px solid var(--card-border); border-radius:18px; overflow:hidden;}
+  .compare table{width:100%; border-collapse:collapse;}
+  .compare th, .compare td{padding:18px 22px; text-align:left; font-size:14.5px; border-bottom:1px solid var(--card-border);}
+  .compare th{color:var(--text-dim); font-weight:600; font-size:13px; text-transform:uppercase; letter-spacing:0.04em;}
+  .compare td.fin{color:#fca5a5;}
+  .compare td.cons{color:var(--teal); font-weight:700;}
+  .compare tr:last-child td{border-bottom:none;}
+  .compare-foot{padding:18px 22px; font-size:12.5px; color:var(--text-dim); border-top:1px solid var(--card-border);}
+
+  /* Mobile: transforma a tabela em cards verticais (sem scroll horizontal) */
+  @media(max-width:640px){
+    .compare table, .compare thead, .compare tbody{display:block; width:100%;}
+    .compare tr:first-child{display:none;}
+    .compare tr{
+      display:grid; grid-template-columns:1fr 1fr; grid-template-areas:"label label" "fin cons";
+      padding:16px 18px; border-bottom:1px solid var(--card-border); gap:6px 14px;
+    }
+    .compare tr:last-child{border-bottom:none;}
+    .compare td{padding:0; border-bottom:none; font-size:14px;}
+    .compare td[data-label="Critério"]{
+      grid-area:label; font-size:12.5px; font-weight:700; color:var(--text-dim);
+      text-transform:uppercase; letter-spacing:0.03em; margin-bottom:2px;
+    }
+    .compare td.fin{grid-area:fin;}
+    .compare td.cons{grid-area:cons; text-align:right;}
+    .compare td.fin::before{content:'Financiamento'; display:block; font-size:10.5px; font-weight:600; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.03em; margin-bottom:3px;}
+    .compare td.cons::before{content:'Consórcio'; display:block; font-size:10.5px; font-weight:600; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.03em; margin-bottom:3px;}
+    .compare-foot{font-size:12px; padding:16px 18px;}
+  }
+  .savings-banner{
+    margin-top:18px; background:linear-gradient(95deg, rgba(37,99,235,0.14), rgba(96,165,250,0.10));
+    border:1px solid rgba(59,130,246,0.3); border-radius:14px; padding:20px 24px;
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+  .savings-banner b{font-size:20px;}
+  .savings-banner b .accent{background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;}
+
+  /* Authority */
+  .authority{
+    background:var(--card); border:1px solid var(--card-border); border-radius:20px; padding:44px;
+    display:grid; grid-template-columns:1.1fr 1fr; gap:40px; align-items:center;
+  }
+  @media(max-width:860px){ .authority{grid-template-columns:1fr;} }
+  .authority h2{font-size:26px; font-weight:800; margin-bottom:14px;}
+  .authority p{color:var(--text-dim); font-size:15px;}
+  .stat-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  .stat-box{background:var(--bg-soft); border:1px solid var(--card-border); border-radius:12px; padding:18px;}
+  .stat-box b{display:block; font-size:24px; font-weight:800; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .stat-box span{font-size:12.5px; color:var(--text-dim);}
+
+  /* Benefits strip */
+  .benefits-banner{
+    background:var(--card); border:1px solid var(--card-border); border-radius:20px; padding:36px 40px;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:24px 32px;
+  }
+  @media(max-width:780px){ .benefits-banner{grid-template-columns:repeat(2,1fr); padding:28px 24px;} }
+  @media(max-width:480px){ .benefits-banner{grid-template-columns:1fr;} }
+  .benefit-item{display:flex; align-items:flex-start; gap:14px;}
+  .benefit-item .icon-badge{margin-bottom:0; flex-shrink:0;}
+  .benefit-item span{font-size:14.5px; font-weight:600; line-height:1.35; padding-top:10px;}
+
+  /* Credit cards gallery */
+  .credit-scroll{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  }
+  @media(max-width:860px){ .credit-scroll{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:480px){ .credit-scroll{grid-template-columns:1fr;} }
+  .credit-card{
+    background:var(--card); border:1px solid var(--card-border); border-radius:16px; overflow:hidden;
+    display:flex; flex-direction:column;
+  }
+  .credit-card .thumb{
+    height:150px; position:relative; overflow:hidden;
+    background:linear-gradient(150deg, #11342c 0%, #0d2630 55%, #0a1420 100%);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .credit-card .thumb::before{
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(220px 140px at 30% 20%, rgba(59,130,246,0.22), transparent 70%);
+  }
+  .credit-card .thumb svg{position:relative; z-index:1; width:62px; height:62px; opacity:0.95;}
+  .credit-card .body{padding:18px 20px 20px; flex:1; display:flex; flex-direction:column;}
+  .credit-card .body .tag{font-size:12px; font-weight:700; color:var(--teal); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:6px;}
+  .credit-card .body .label{font-size:13px; color:var(--text-dim); margin-bottom:2px;}
+  .credit-card .body .value{font-size:21px; font-weight:800; margin-bottom:2px;}
+  .credit-card .body .monthly{font-size:13px; color:var(--text-dim); margin-bottom:16px;}
+  .credit-card .body .monthly b{color:var(--teal); font-weight:700;}
+  .credit-card .body .btn-simule{
+    display:block; text-align:center; background:var(--grad); color:#06160f; font-weight:700; font-size:14px;
+    padding:12px; border-radius:9px; text-decoration:none; margin-bottom:8px;
+  }
+  .credit-card .body .btn-zap{
+    display:flex; align-items:center; justify-content:center; gap:6px;
+    text-align:center; background:var(--bg-soft); border:1px solid var(--card-border); color:var(--text); font-weight:600; font-size:13.5px;
+    padding:11px; border-radius:9px; text-decoration:none;
+  }
+
+  /* Form */
+  .form-section{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:flex-start;}
+  @media(max-width:860px){ .form-section{grid-template-columns:1fr;} }
+  .form-card{background:var(--card); border:1px solid var(--card-border); border-radius:18px; padding:32px;}
+  .form-card input, .form-card select{
+    width:100%; background:var(--bg-soft); border:1px solid var(--card-border); border-radius:10px;
+    padding:14px 16px; color:var(--text); font-size:14.5px; margin-bottom:14px; font-family:inherit;
+    outline:none; transition: border-color 0.2s;
+  }
+  .form-card input:focus, .form-card select:focus{
+    border-color: rgba(59,130,246,0.5);
+  }
+  .form-card input.error, .form-card select.error{
+    border-color: rgba(252,165,165,0.6) !important;
+  }
+  .form-card input::placeholder{color:#5d7572;}
+  .form-card button{
+    width:100%; background:var(--grad); color:#06160f; font-weight:700; font-size:15.5px;
+    padding:15px; border:none; border-radius:10px; cursor:pointer; margin-top:4px;
+    transition: opacity 0.2s, transform 0.1s;
+    position:relative;
+  }
+  .form-card button:hover{ opacity:0.92; }
+  .form-card button:active{ transform:scale(0.98); }
+  .form-card button:disabled{ opacity:0.6; cursor:not-allowed; }
+  .list-check{list-style:none; margin-top:20px;}
+  .list-check li{padding-left:28px; position:relative; margin-bottom:12px; color:var(--text-dim); font-size:15px;}
+  .list-check li::before{content:'✓'; position:absolute; left:0; color:var(--teal); font-weight:800;}
+
+  /* Form states */
+  .form-msg{
+    display:none; border-radius:10px; padding:14px 16px; font-size:14px;
+    margin-bottom:14px; font-weight:500;
+  }
+  .form-msg.error{
+    display:block;
+    background:rgba(252,165,165,0.12); border:1px solid rgba(252,165,165,0.3); color:#fca5a5;
+  }
+  .form-msg.success{
+    display:block;
+    background:rgba(59,130,246,0.12); border:1px solid rgba(59,130,246,0.3); color:var(--teal);
+  }
+
+  /* Success state */
+  .form-success-overlay{
+    display:none; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:20px 0;
+  }
+  .form-success-overlay.show{ display:flex; }
+  .form-success-overlay .check-icon{
+    width:64px; height:64px; border-radius:50%; margin-bottom:20px;
+    background:linear-gradient(135deg, rgba(59,130,246,0.2), rgba(96,165,250,0.15));
+    border:1px solid rgba(59,130,246,0.4);
+    display:flex; align-items:center; justify-content:center;
+    font-size:28px;
+  }
+  .form-success-overlay h3{font-size:20px; font-weight:700; margin-bottom:10px;}
+  .form-success-overlay p{color:var(--text-dim); font-size:14.5px; max-width:280px;}
+
+  /* FAQ */
+  .faq-item{border-bottom:1px solid var(--card-border); padding:22px 0;}
+  .faq-item h3{font-size:16.5px; font-weight:700; margin-bottom:8px;}
+  .faq-item p{color:var(--text-dim); font-size:14.5px;}
+
+  /* Final CTA */
+  .final-cta{
+    text-align:center; background:linear-gradient(135deg, rgba(59,130,246,0.12), rgba(96,165,250,0.08));
+    border:1px solid rgba(59,130,246,0.25); border-radius:24px; padding:64px 32px;
+  }
+  .final-cta h2{font-size:clamp(24px,4vw,34px); font-weight:800; max-width:560px; margin:0 auto 28px;}
+
+  footer{padding:40px 0; border-top:1px solid var(--card-border); text-align:center; color:var(--text-dim); font-size:13px;}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<main>
+
+  <nav>
+    <div class="logo">Rondon<span>Investimentos</span></div>
+    <div class="nav-links">
+      <a href="#comparativo">Comparativo</a>
+      <a href="#perfis">Como Funciona</a>
+      <a href="#cartas">Cartas de Crédito</a>
+      <a href="#autoridade">Sobre</a>
+      <a href="#faq">Dúvidas</a>
+    </div>
+    <a href="#simular" class="nav-cta">Quero Simular</a>
+  </nav>
+
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Sua Casa Própria &middot; Parceira Oficial Racon Consórcios</div>
+      <h1>Consórcio de imóveis não é sonho distante — é o caminho mais inteligente para <span class="accent">conquistar sua casa.</span></h1>
+      <p class="lead">Descubra como usar o consórcio imobiliário para sair do aluguel e conquistar o imóvel onde você e sua família vão morar — com parcelas previsíveis, sem entrada obrigatória alta e sem pagar juros.</p>
+      <a href="#simular" class="btn-primary">Quero simular minha casa</a>
+      <a href="#comparativo" class="btn-secondary">Ver comparativo</a>
+      <div class="hero-stats">
+        <div><b>+R$6 BI</b><span>em créditos disponibilizados</span></div>
+        <div><b>19</b><span>estados atendidos</span></div>
+        <div><b>+120 mil</b><span>cotas comercializadas</span></div>
+        <div><b>30+ anos</b><span>de mercado (Racon Consórcios)</span></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="divider wrap"></div>
+
+  <div class="wrap">
+    <section id="comparativo">
+      <div class="qa">
+        <h3>Qual a diferença entre consórcio e financiamento para quem quer morar no imóvel?</h3>
+        <p>O financiamento trava seu orçamento em juros altos desde o primeiro mês, com parcelas mais pesadas. O consórcio mantém o custo menor — apenas taxa de administração — deixando mais espaço no seu orçamento mensal.</p>
+      </div>
+
+      <div class="section-head" style="margin-top:48px;">
+        <h2>Financiamento pesa no seu bolso. <br>Consórcio cabe no seu orçamento.</h2>
+        <p>Simulação para um crédito de R$ 500.000,00 — financiamento em 420 meses vs. consórcio em 220 meses.</p>
+      </div>
+
+      <div class="compare">
+        <table>
+          <tr><th>Critério</th><th>Financiamento</th><th>Consórcio</th></tr>
+          <tr><td data-label="Critério">Valor</td><td class="fin" data-label="Financiamento">R$ 500.000,00</td><td class="cons" data-label="Consórcio">R$ 500.000,00</td></tr>
+          <tr><td data-label="Critério">Prazo</td><td class="fin" data-label="Financiamento">420 meses</td><td class="cons" data-label="Consórcio">220 meses</td></tr>
+          <tr><td data-label="Critério">Taxa de juros / administração</td><td class="fin" data-label="Financiamento">12% a.a.</td><td class="cons" data-label="Consórcio">1,36% a.a.</td></tr>
+          <tr><td data-label="Critério">Parcela inicial</td><td class="fin" data-label="Financiamento">R$ 5.630,00</td><td class="cons" data-label="Consórcio">R$ 1.718,00</td></tr>
+          <tr><td data-label="Critério">Custo total estimado</td><td class="fin" data-label="Financiamento">R$ 1.500.000,00</td><td class="cons" data-label="Consórcio">R$ 625.000,00</td></tr>
+        </table>
+        <div class="compare-foot">*Consórcio possui apenas taxa de administração, sem incidência de juros. Dados baseados em médias de mercado — consulte uma simulação personalizada com um especialista Rondon antes de contratar.</div>
+      </div>
+
+      <div class="savings-banner">
+        <b>Economia estimada com o consórcio: <span class="accent">R$ 875.000,00</span></b>
+        <a href="#simular" class="btn-secondary" style="margin-left:0;">Simular meu caso</a>
+      </div>
+    </section>
+  </div>
+
+  <div class="divider wrap"></div>
+
+  <div class="wrap">
+    <section id="perfis">
+      <div class="qa">
+        <h3>Consórcio serve para comprar o imóvel onde vou morar?</h3>
+        <p>Sim — é uma das formas mais usadas no Brasil para conquistar a casa própria. Sem juros, com parcelas previsíveis e sem precisar de uma entrada alta, é uma alternativa real ao financiamento tradicional para quem quer sair do aluguel.</p>
+      </div>
+
+      <div class="section-head" style="margin-top:48px;">
+        <h2>Qual é o seu momento hoje?</h2>
+        <p>Identificamos a sua necessidade e montamos uma proposta personalizada que se encaixa no seu orçamento e no seu plano de vida.</p>
+      </div>
+      <div class="grid3">
+        <div class="card">
+          <div class="icon-badge">🏠</div>
+          <h3>Sair do aluguel</h3>
+          <p>Pare de pagar aluguel para construir patrimônio de outra pessoa. Planeje a contemplação para conquistar o imóvel próprio e parar de jogar dinheiro fora todo mês.</p>
+        </div>
+        <div class="card">
+          <div class="icon-badge">👨‍👩‍👧</div>
+          <h3>Trocar de casa por motivo de família</h3>
+          <p>Filho chegando, casamento, ou simplesmente precisando de mais espaço — use a carta de crédito para mudar para um imóvel que acompanhe a sua fase de vida.</p>
+        </div>
+        <div class="card">
+          <div class="icon-badge">🔑</div>
+          <h3>Comprar a primeira casa sem juros</h3>
+          <p>Planeje a aquisição do seu primeiro imóvel com parcelas que cabem no orçamento, sem o peso dos juros de um financiamento bancário tradicional.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="divider wrap"></div>
+
+  <div class="wrap">
+    <section id="cartas">
+      <div class="section-head">
+        <h2>Consórcio de imóveis: os benefícios para quem quer morar</h2>
+        <p>Veja por que o consórcio é uma alternativa real ao financiamento para conquistar a sua casa.</p>
+      </div>
+
+      <div class="benefits-banner" style="margin-bottom:48px;">
+        <div class="benefit-item"><div class="icon-badge">💰</div><span>Zero entrada</span></div>
+        <div class="benefit-item"><div class="icon-badge">🔓</div><span>Livre escolha do imóvel</span></div>
+        <div class="benefit-item"><div class="icon-badge">📉</div><span>Sem juros</span></div>
+        <div class="benefit-item"><div class="icon-badge">🗓️</div><span>Até 240 meses para pagar</span></div>
+        <div class="benefit-item"><div class="icon-badge">📊</div><span>Parcelas lineares</span></div>
+        <div class="benefit-item"><div class="icon-badge">🏦</div><span>Use seu FGTS como lance</span></div>
+      </div>
+
+      <div class="section-head" style="margin-bottom:24px;">
+        <h2 style="font-size:24px;">Escolha a faixa de crédito ideal para a sua casa</h2>
+        <p>Valores de referência. Sua carta pode ser ajustada para o imóvel que você tem em mente.</p>
+      </div>
+
+      <div class="credit-scroll">
+        <div class="credit-card">
+          <div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.5"><path d="M3 11l9-8 9 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v10h14V10" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 20v-6h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="body">
+            <div class="tag">Consórcio Imobiliário</div>
+            <div class="label">Crédito no valor de:</div>
+            <div class="value">R$ 450.000,00</div>
+            <div class="monthly">a partir de <b>R$ 1.500/mês</b></div>
+            <a href="#simular" class="btn-simule">Simule</a>
+            <a href="#simular" class="btn-zap">💬 Simular por WhatsApp</a>
+          </div>
+        </div>
+        <div class="credit-card">
+          <div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.5"><path d="M3 11l9-8 9 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v10h14V10" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 20v-6h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="body">
+            <div class="tag">Consórcio Imobiliário</div>
+            <div class="label">Crédito no valor de:</div>
+            <div class="value">R$ 500.000,00</div>
+            <div class="monthly">a partir de <b>R$ 1.700/mês</b></div>
+            <a href="#simular" class="btn-simule">Simule</a>
+            <a href="#simular" class="btn-zap">💬 Simular por WhatsApp</a>
+          </div>
+        </div>
+        <div class="credit-card">
+          <div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="1.5"><path d="M3 11l9-8 9 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v10h14V10" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 20v-6h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="body">
+            <div class="tag">Consórcio Imobiliário</div>
+            <div class="label">Crédito no valor de:</div>
+            <div class="value">R$ 600.000,00</div>
+            <div class="monthly">a partir de <b>R$ 2.000/mês</b></div>
+            <a href="#simular" class="btn-simule">Simule</a>
+            <a href="#simular" class="btn-zap">💬 Simular por WhatsApp</a>
+          </div>
+        </div>
+        <div class="credit-card">
+          <div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.5"><path d="M3 11l9-8 9 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v10h14V10" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 20v-6h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="body">
+            <div class="tag">Consórcio Imobiliário</div>
+            <div class="label">Crédito no valor de:</div>
+            <div class="value">R$ 1.000.000,00</div>
+            <div class="monthly">a partir de <b>R$ 3.400/mês</b></div>
+            <a href="#simular" class="btn-simule">Simule</a>
+            <a href="#simular" class="btn-zap">💬 Simular por WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="divider wrap"></div>
+
+  <div class="wrap">
+    <section id="autoridade">
+      <div class="authority">
+        <div>
+          <h2>Estrutura de quem já entregou +120 mil cartas de crédito.</h2>
+          <p>A Rondon Investimentos é <b>parceira oficial autorizada da Racon Consórcios</b> — administradora com mais de 30 anos de mercado, regulamentada e fiscalizada pelo Banco Central do Brasil. Sua conquista da casa própria apoiada em quem tem escala e solidez reais, não em promessas.</p>
+        </div>
+        <div class="stat-grid">
+          <div class="stat-box"><b>+R$6 BI</b><span>em créditos disponibilizados</span></div>
+          <div class="stat-box"><b>+500</b><span>pontos de venda no Brasil</span></div>
+          <div class="stat-box"><b>19</b><span>estados atendidos</span></div>
+          <div class="stat-box"><b>30+ anos</b><span>de atuação no mercado</span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="divider wrap"></div>
+
+  <div class="wrap">
+    <section id="simular">
+      <div class="form-section">
+        <div>
+          <div class="section-head" style="margin-bottom:24px;">
+            <h2>Quero conquistar minha casa</h2>
+            <p>Preencha os dados e um especialista Rondon Investimentos te ajuda a montar o plano ideal para sair do aluguel e conquistar o seu imóvel.</p>
+          </div>
+          <ul class="list-check">
+            <li>Simulação gratuita e sem compromisso</li>
+            <li>Atendimento com especialista, não robô</li>
+            <li>Plano com a segurança da Racon Consórcios</li>
+          </ul>
+        </div>
+
+        <div class="form-card">
+          <!-- Mensagem de erro/feedback -->
+          <div id="formMsg" class="form-msg"></div>
+
+          <!-- Campos do formulário -->
+          <div id="formFields">
+            <input id="f_nome" type="text" placeholder="Nome completo" autocomplete="name">
+            <input id="f_whatsapp" type="tel" placeholder="WhatsApp" autocomplete="off" name="whatsapp_field_no_autofill" data-lpignore="true" data-form-type="other">
+            <input id="f_email" type="email" placeholder="E-mail" autocomplete="email">
+            <select id="f_objetivo">
+              <option value="Quero sair do aluguel">Quero sair do aluguel</option>
+              <option value="Quero trocar de casa">Quero trocar de casa</option>
+              <option value="Quero comprar minha primeira casa">Quero comprar minha primeira casa</option>
+            </select>
+            <select id="f_credito">
+              <option value="" disabled selected>Valor de crédito desejado</option>
+              <option value="Até R$ 400 mil">Até R$ 400 mil</option>
+              <option value="Entre R$ 400 e R$ 500 mil">Entre R$ 400 e R$ 500 mil</option>
+              <option value="Entre R$ 500 mil e R$ 600 mil">Entre R$ 500 mil e R$ 600 mil</option>
+              <option value="Acima de R$ 600 mil">Acima de R$ 600 mil</option>
+            </select>
+            <button id="btnEnviar" onclick="enviarFormulario()">Falar com o especialista</button>
+          </div>
+
+          <!-- Estado de sucesso -->
+          <div class="form-success-overlay" id="formSuccess">
+            <div class="check-icon">✓</div>
+            <h3>Recebemos seu contato!</h3>
+            <p>Um especialista Rondon Investimentos vai te chamar em breve pelo WhatsApp.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="divider wrap"></div>
+
+  <div class="wrap">
+    <section id="faq">
+      <div class="section-head">
+        <h2>Perguntas frequentes</h2>
+        <p>Tudo que você precisa saber antes de usar o consórcio para conquistar sua casa.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Consórcio é uma boa forma de comprar a casa para morar?</h3>
+        <p>Sim — é uma das alternativas mais usadas no Brasil. Elimina os juros do financiamento e permite planejar a compra com parcelas que cabem no seu orçamento mensal, sem comprometer o sustento da família.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Posso usar a carta de crédito para comprar qualquer imóvel para morar?</h3>
+        <p>Sim. Após a contemplação, você escolhe livremente o imóvel dentro da categoria contratada — apartamento, casa, novo ou usado — para morar com a sua família.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Existe risco no consórcio?</h3>
+        <p>O principal ponto de atenção é que o prazo de contemplação não é imediato — depende de sorteio ou lance. Por isso, vale começar o quanto antes, mesmo se a mudança não for urgente.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Preciso dar entrada para contratar o consórcio?</h3>
+        <p>Não é obrigatório dar uma entrada alta como no financiamento. Você paga parcelas mensais e, após a contemplação (por sorteio ou lance), recebe a carta de crédito para comprar o imóvel.</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap" style="padding-bottom:80px;">
+    <div class="final-cta">
+      <h2>O aluguel que você paga hoje não constrói o seu futuro. A casa própria, sim.</h2>
+      <a href="#simular" class="btn-primary">Quero simular minha casa</a>
+    </div>
+  </div>
+
+  <footer>
+    Rondon Investimentos &middot; Parceira Oficial Autorizada Racon Consórcios &middot; Regulamentado pelo Banco Central do Brasil &middot; Porto Alegre — RS
+  </footer>
+
+</main>
+
+<script>
+  // =====================================================
+  // CONFIGURAÇÃO — substitua pela URL do webhook do Make
+  // =====================================================
+  const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/r4thm3e6aybgxx2n2kfthuxp91ickart';
+  // =====================================================
+
+  function mostrarErro(msg) {
+    const el = document.getElementById('formMsg');
+    el.className = 'form-msg error';
+    el.textContent = msg;
+  }
+
+  function limparErro() {
+    const el = document.getElementById('formMsg');
+    el.className = 'form-msg';
+    el.textContent = '';
+  }
+
+  function marcarCampo(id, erro) {
+    const el = document.getElementById(id);
+    if (erro) {
+      el.classList.add('error');
+    } else {
+      el.classList.remove('error');
+    }
+  }
+
+  function validarWhatsApp(v) {
+    // Aceita formatos: (51) 99999-9999 | 51999999999 | +5551999999999
+    return v.replace(/\D/g,'').length >= 10;
+  }
+
+  async function enviarFormulario() {
+    limparErro();
+
+    const nome     = document.getElementById('f_nome').value.trim();
+    const whatsapp = document.getElementById('f_whatsapp').value.trim();
+    const email    = document.getElementById('f_email').value.trim();
+    const objetivo = document.getElementById('f_objetivo').value;
+    const credito  = document.getElementById('f_credito').value;
+
+    // Validações
+    let temErro = false;
+
+    marcarCampo('f_nome', !nome);
+    marcarCampo('f_whatsapp', !whatsapp || !validarWhatsApp(whatsapp));
+    marcarCampo('f_email', !email || !email.includes('@'));
+    marcarCampo('f_credito', !credito);
+
+    if (!nome) { mostrarErro('Por favor, informe seu nome completo.'); return; }
+    if (!whatsapp || !validarWhatsApp(whatsapp)) { mostrarErro('Por favor, informe um WhatsApp válido.'); return; }
+    if (!email || !email.includes('@')) { mostrarErro('Por favor, informe um e-mail válido.'); return; }
+    if (!credito) { mostrarErro('Por favor, selecione o valor de crédito desejado.'); return; }
+
+    // Bloquear botão e mostrar loading
+    const btn = document.getElementById('btnEnviar');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    // Payload para o Make (que vai parsear e enviar para a API do C2S)
+    const whatsappLimpo = whatsapp.replace(/\D/g,'');
+
+    const payload = {
+      nome:      nome,
+      whatsapp:  whatsapp,
+      phone_or_email_or_wpp_username: whatsappLimpo || email,
+      email:     email,
+      objetivo:  objetivo,
+      credito:   credito,
+      origem:    'Rondon Investimentos - Moradia',
+      url:       window.location.href,
+      timestamp: new Date().toISOString()
+    };
+
+    try {
+      await enviarComRetry(MAKE_WEBHOOK_URL, payload, 3);
+
+      // Sucesso — esconder form e mostrar confirmação
+      document.getElementById('formFields').style.display = 'none';
+      document.getElementById('formMsg').style.display = 'none';
+      document.getElementById('formSuccess').classList.add('show');
+
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Falar com o especialista';
+      if (err.status === 429) {
+        mostrarErro('Estamos com alta procura agora. Aguarde alguns segundos e tente novamente.');
+      } else {
+        mostrarErro('Ops! Ocorreu um erro ao enviar. Tente novamente ou nos chame no WhatsApp.');
+      }
+      console.error('Erro ao enviar formulário:', err);
+    }
+  }
+
+  // Envia com tentativas automáticas em caso de erro 429 (limite de requisições) ou 5xx (erro temporário do servidor)
+  async function enviarComRetry(url, payload, maxTentativas) {
+    let ultimoErro;
+    for (let tentativa = 1; tentativa <= maxTentativas; tentativa++) {
+      try {
+        const resp = await fetch(url, {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify(payload)
+        });
+
+        if (resp.ok) return resp;
+
+        // Erros que valem tentar de novo: 429 (rate limit) e 5xx (erro temporário do servidor)
+        if (resp.status === 429 || resp.status >= 500) {
+          ultimoErro = new Error('Erro na resposta: ' + resp.status);
+          ultimoErro.status = resp.status;
+          if (tentativa < maxTentativas) {
+            const espera = 1500 * tentativa; // 1.5s, 3s, 4.5s...
+            await new Promise(r => setTimeout(r, espera));
+            continue;
+          }
+          throw ultimoErro;
+        }
+
+        // Outros erros (4xx que não são rate limit) — não vale tentar de novo
+        const erroFinal = new Error('Erro na resposta: ' + resp.status);
+        erroFinal.status = resp.status;
+        throw erroFinal;
+
+      } catch (err) {
+        ultimoErro = err;
+        if (tentativa === maxTentativas) throw ultimoErro;
+        // Erro de rede (sem status) também vale tentar de novo
+        if (!err.status) {
+          await new Promise(r => setTimeout(r, 1500 * tentativa));
+          continue;
+        }
+        throw err;
+      }
+    }
+    throw ultimoErro;
+  }
+
+  // Máscara para WhatsApp (permite apagar normalmente)
+  document.getElementById('f_whatsapp').addEventListener('input', function(e) {
+    let v = e.target.value.replace(/\D/g,'');
+    if (v.length > 11) v = v.slice(0,11);
+
+    if (v.length === 0) {
+      e.target.value = '';
+      return;
+    }
+
+    let formatted = v;
+    if (v.length > 10) {
+      formatted = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7,11);
+    } else if (v.length > 6) {
+      formatted = '(' + v.slice(0,2) + ') ' + v.slice(2,6) + '-' + v.slice(6);
+    } else if (v.length > 2) {
+      formatted = '(' + v.slice(0,2) + ') ' + v.slice(2);
+    } else {
+      formatted = v.length > 0 ? '(' + v : '';
+    }
+
+    e.target.value = formatted;
+  });
+
+  document.getElementById('f_whatsapp').addEventListener('keydown', function(e) {
+    // Garante que Backspace/Delete sempre conseguem remover caracteres, mesmo sobre hífen/parênteses
+    if ((e.key === 'Backspace' || e.key === 'Delete')) {
+      const el = e.target;
+      if (el.selectionStart !== el.selectionEnd) return;
+      const pos = el.selectionStart;
+      const val = el.value;
+      if (e.key === 'Backspace' && pos > 0 && /[()\- ]/.test(val[pos-1])) {
+        e.preventDefault();
+        let digits = val.replace(/\D/g,'');
+        digits = digits.slice(0, -1);
+        el.value = digits;
+        el.dispatchEvent(new Event('input'));
+      }
+    }
+  });
+
+  // Limpar erro ao digitar
+  ['f_nome','f_whatsapp','f_email','f_credito'].forEach(function(id) {
+    document.getElementById(id).addEventListener('input', function() {
+      marcarCampo(id, false);
+      limparErro();
+    });
+  });
+</script>
+
+</body>
+</html>
