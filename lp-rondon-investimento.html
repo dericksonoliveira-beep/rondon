@@ -304,6 +304,7 @@ src="https://www.facebook.com/tr?id=1579236880497603&ev=PageView&noscript=1"
       document.getElementById('formFields').style.display = 'none';
       document.getElementById('formMsg').style.display = 'none';
       document.getElementById('formSuccess').classList.add('show');
+      fbq('track', 'Lead');
     } catch (err) {
       btn.disabled = false;
       btn.textContent = 'Simular Agora ⤓';
